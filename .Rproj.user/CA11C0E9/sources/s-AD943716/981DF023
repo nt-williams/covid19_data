@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1584651748073.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1296129951",
+    "id" : "981DF023",
+    "lastKnownWriteTime" : 1584658179,
+    "last_content_update" : 1584658179760,
+    "path" : "/Volumes/Nick Williams/covid19/covid19_data/functions/hopkins_data_clean.R",
+    "project_path" : "functions/hopkins_data_clean.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
