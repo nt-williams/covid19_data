@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  pull:
-    branches:
-      - master
 
 name: Extract COVID data
 
