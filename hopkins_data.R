@@ -16,6 +16,8 @@ fun_in <- here("functions", "hopkins_data_clean.R")
 cc_in <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
 dths_in <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv"
 rcvr_in <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv"
+all_US_out <- here("extracted", paste0("daily_US_count_", as.character(Sys.Date()), ".rds"))
+all_USL_out <- here("extracted", paste0("daily_US_locale_count_", as.character(Sys.Date()), ".rds"))
 
 # data import -------------------------------------------------------------
 
@@ -38,6 +40,9 @@ all_US <- map(., pull_US_country)
 # extracting US cases by reporting locale by day
 all_US_locale <- map(., pull_US_locale)
 
+# export ------------------------------------------------------------------
 
-
+walk2(list(all_US, all_US_locale), 
+      list(all_US_out, all_USL_out), 
+      saveRDS)
 

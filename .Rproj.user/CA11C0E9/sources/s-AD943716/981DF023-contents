@@ -17,7 +17,7 @@ fix_year <- function(date) {
 
 read_hopkins_covid <- function(fp, nn = c("province_state", "country_region", "lat", "long", "date", "count")) {
   
-  raw <- vroom::vroom(fp)
+  raw <- readr::read_csv(fp)
   out <- tidyr::pivot_longer(
     data = raw,
     cols = -c(1:4),
@@ -33,6 +33,7 @@ read_hopkins_covid <- function(fp, nn = c("province_state", "country_region", "l
 }
 
 pull_US_country <- function(df) {
+  
   . <- df[df$country_region == "US", ]
   . <- dplyr::filter(., !stringr::str_detect(province_state, "\\,"))
   locations <- unique(.$province_state)
@@ -43,6 +44,7 @@ pull_US_country <- function(df) {
   
   message("Daily US count based on the following locations:\n", paste(locations, collapse = ", "))
   return(.)
+  
 }
 
 pull_US_locale <- function(df) {

@@ -1,0 +1,26 @@
+on:
+  schedule: 
+    - cron: '0 12 * * *'
+  push:
+    branches:
+      - master
+  pull:
+    branches:
+      - master
+
+name: Extract COVID data
+
+jobs:
+  R-CMD-check:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e 'install.packages(c("tidyverse", "here", "xst"))'
+      - name: Extract daily data
+        run: Rscript -e 'source("hopkins_data.R")'
+      - name: Commit results
+        run: |
+          git commit extracted -m 'Re-extract daily data' || echo "No changes to commit"
+          git push https://${{github.actor}}:${{secrets.GH_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
