@@ -93,11 +93,12 @@ pull_country_locale <- function(df, country) {
 make_hopkins_path <- function(data, country, locale = FALSE, 
                               type = c("confirmed_cases", "deaths", "recovered")) {
   type <- match.arg(type)
+  country <- janitor::make_clean_names(country)
   
   if (locale) {
-    . <- paste0("daily_", type, "_", country, "_locale_count_", as.character(Sys.Date()), ".csv")
+    . <- paste0("daily_", type, "_", country, "_locale_count", ".csv")
   } else {
-    . <- paste0("daily_", type, "_", country, "_count_", as.character(Sys.Date()), ".csv")
+    . <- paste0("daily_", type, "_", country, "_count", ".csv")
   }
   return(.)
 }

@@ -1,9 +1,6 @@
 on:
   schedule: 
     - cron: '0 12 * * *'
-  push:
-    branches:
-      - master
 
 name: Extract COVID data
 

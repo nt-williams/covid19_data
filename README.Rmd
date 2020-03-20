@@ -19,7 +19,13 @@ create_csv_url <- function(path) {
 create_file_desc <- function(path) {
   type <- stringr::str_extract(path, c("confirmed_cases", "deaths", "recovered"))
   type <- type[!is.na(type)]
-  cntry <- stringr::str_extract(path, "[[:upper:]][[:alpha:]]+")
+  cntry <-
+    snakecase::to_title_case(
+      stringr::str_extract(
+        path,
+        "(?<=confirmed_cases|deaths|recovered_).+(?=_count.csv)"
+      )
+    )
   locale <- stringr::str_extract(path, "locale")
   
   if (type == "confirmed_cases") {
