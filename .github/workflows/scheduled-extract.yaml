@@ -12,7 +12,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install dependencies
-        run: Rscript -e 'install.packages(c("tidyverse", "here", "xts", "rmarkdown", "knitr"))'
+        run: Rscript -e 'install.packages(c("tidyverse", "here", "xts", "rmarkdown", "knitr", "snakecase", "janitor"))'
       - name: Extract daily data
         run: Rscript -e 'source("hopkins_data.R")'
       - name: Update README links
