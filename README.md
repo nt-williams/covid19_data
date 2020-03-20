@@ -17,8 +17,7 @@ into more locale specific files.
 R scripts are automatically run at 12:00 PM Eastern Standard Time and
 cleaned data files are automatically uploaded to the `extracted` folder.
 
-**Data file
-summaries**
+**Data file summaries**
 
 | Description                                                                             | File.link                                                                                                                                                   |
 | :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
