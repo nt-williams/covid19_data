@@ -11,6 +11,33 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r functions, echo=FALSE}
+create_csv_url <- function(path) {
+  paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/", stringr::str_replace(path, "\\s", "%"))
+}
+
+create_file_desc <- function(path) {
+  type <- stringr::str_extract(path, c("confirmed_cases", "deaths", "recovered"))
+  type <- type[!is.na(type)]
+  cntry <- stringr::str_extract(path, "[[:upper:]][[:alpha:]]+")
+  locale <- stringr::str_extract(path, "locale")
+  
+  if (type == "confirmed_cases") {
+    type <-  "confirmed cases"
+  } else {
+    type <- type
+  }
+  
+  if (is.na(locale)) {
+    loc <- glue::glue("aggregate {cntry}")
+  } else {
+    loc <- glue::glue("{cntry} and it's states/territories/regions")
+  }
+  
+  glue::glue("Daily counts of {type} for the {loc}")
+}
+```
+
 # COVID-19 data extraction task
 
 <!-- badges: start -->
@@ -22,11 +49,12 @@ R scripts are automatically run at 12:00 PM Eastern Standard Time and cleaned da
 
 **Data file summaries**
 
-| Description    | File link |
-|----------------------------------------------|-----------|
-| Daily counts of confirmed cases for the aggregate United States | `r paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_confirmed_cases_US_count_", as.character(Sys.Date()), ".csv")` | 
-| Daily counts of deaths for the aggregate United States | `r paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_deaths_US_count_", as.character(Sys.Date()), ".csv")` | 
-| Daily counts of recoveries for the aggregate United States | `r paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_recovered_US_count_", as.character(Sys.Date()), ".csv")` | 
-| Daily counts of confirmed cases for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship) | `r paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_confirmed_cases_US_locale_count_", as.character(Sys.Date()), ".csv")` |
-| Daily counts of deaths for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship) | `r paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_deaths_US_locale_count_", as.character(Sys.Date()), ".csv")` |
-| Daily counts of recoveries for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship) | `r paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_recovered_US_locale_count_", as.character(Sys.Date()), ".csv")` |
+```{r, echo=FALSE}
+. <- data.frame(
+  Description = purrr::map_chr(list.files(here::here("extracted")), create_file_desc),
+  `File link` = purrr::map_chr(list.files(here::here("extracted")), create_csv_url)
+)
+
+knitr::kable(.)
+```
+

@@ -39,21 +39,47 @@ source(fun_in)
 
 # cleaning ----------------------------------------------------------------
 
-# extracting total US cases by day
-all_US <- map(., pull_US_country)
+cntrys <- levels(as.factor(.$confirmed_cases$country_region))
+names(cntrys) <- cntrys
+has_locale <- c("Australia", "Canada", "China", "Cruise Ship", "Denmark", "France", "Netherlands", "United Kingdom", "US")
+names(has_locale) <- has_locale
 
-# extracting US cases by reporting locale by day
-all_US_locale <- map(., pull_US_locale)
+# extracting total country cases by day
+all_cntrys <-
+  map(., function(x)
+    map(cntrys, function(y)
+      pull_country(x, y)))
+
+# extracting total cases by country reporting locale by day
+specific_cntry_locale <-
+  map(., function(x)
+    map(has_locale, function(y)
+      pull_country_locale(x, y)))
 
 # export ------------------------------------------------------------------
 
-# total US cases by day
-walk2(all_US, 
-      list(all_US_cc_out, all_US_dths_out, all_US_rcvr_out), 
-      write.csv, row.names = F)
+# country level confirmed cases by day
+iwalk(all_cntrys$confirmed_cases, 
+      export_hopkins_data, locale = FALSE, type = "confirmed_cases")
 
-# US cases by locale by day
-walk2(all_US_locale, 
-      list(all_USL_cc_out, all_USL_dths_out, all_USL_rcvr_out), 
-      write.csv, row.names = F)
+# country level deaths by day
+iwalk(all_cntrys$deaths, 
+      export_hopkins_data, locale = FALSE, type = "deaths")
+
+# country level recoveries by day
+iwalk(all_cntrys$recovered, 
+      export_hopkins_data, locale = FALSE, type = "recovered")
+
+# country locale confirmed cases by day
+iwalk(specific_cntry_locale$confirmed_cases, 
+      export_hopkins_data, locale = TRUE, type = "confirmed_cases")
+
+# country locale deaths by day
+iwalk(specific_cntry_locale$deaths, 
+      export_hopkins_data, locale = TRUE, type = "deaths")
+
+# country locale recoveries by day
+iwalk(specific_cntry_locale$recovered, 
+      export_hopkins_data, locale = TRUE, type = "recovered")
+
 
