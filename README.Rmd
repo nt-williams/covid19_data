@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 
 ```{r functions, echo=FALSE}
 create_csv_url <- function(path) {
-  paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/", stringr::str_replace(path, "\\s", "%"))
+  paste0("https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/", stringr::str_replace_all(path, "\\s", "%"))
 }
 
 create_file_desc <- function(path) {
