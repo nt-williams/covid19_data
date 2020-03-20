@@ -17,14 +17,13 @@ into more locale specific files.
 R scripts are automatically run at 12:00 PM Eastern Standard Time and
 cleaned data files are automatically uploaded to the `extracted` folder.
 
-**Data file
-summaries**
+**Data file summaries**
 
 | Description                                                                                                                                 | File link                                                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Daily counts of confirmed cases for the aggregate United States                                                                             | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_confirmed_cases_US_count_2020-03-19.csv>        |
-| Daily counts of deaths for the aggregate United States                                                                                      | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_deaths_US_count_2020-03-19.csv>                 |
-| Daily counts of recoveries for the aggregate United States                                                                                  | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_recovered_US_count_2020-03-19.csv>              |
-| Daily counts of confirmed cases for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship) | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_confirmed_cases_US_locale_count_2020-03-19.csv> |
-| Daily counts of deaths for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship)          | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_deaths_US_locale_count_2020-03-19.csv>          |
-| Daily counts of recoveries for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship)      | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_recovered_US_locale_count_2020-03-19.csv>       |
+| Daily counts of confirmed cases for the aggregate United States                                                                             | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_confirmed_cases_US_count_2020-03-20.csv>        |
+| Daily counts of deaths for the aggregate United States                                                                                      | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_deaths_US_count_2020-03-20.csv>                 |
+| Daily counts of recoveries for the aggregate United States                                                                                  | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_recovered_US_count_2020-03-20.csv>              |
+| Daily counts of confirmed cases for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship) | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_confirmed_cases_US_locale_count_2020-03-20.csv> |
+| Daily counts of deaths for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship)          | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_deaths_US_locale_count_2020-03-20.csv>          |
+| Daily counts of recoveries for the United States at the state level (includes Puerto Rico, Gaum, and the Diamond Princess cruise ship)      | <https://raw.githubusercontent.com/nt-williams/covid19_data/master/extracted/daily_recovered_US_locale_count_2020-03-20.csv>       |
